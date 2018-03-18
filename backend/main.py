@@ -6,17 +6,23 @@ app = Flask(__name__)
 app.secret_key = 'super secret key'
 
 users = {
-    'piti': '1234',
-    'ham': '4321',
-    'pan': '0000'
+    'piti': dict(username='piti', password='1234', roles=['admin', 'user']),
+    'ham': dict(username='ham', password='4321', roles=['user']),
+    'pan': dict(username='pan', password='0000', roles=['user'])
 }
+
+def cleanAuthInfo(auth_info):
+    # remove password from authInfo
+    return { k:v for k,v in auth_info.items() if k != 'password' }
 
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
-    if data['username'] in users and data['password'] == users[data['username']]:
-        session['username'] = data['username']
-        return jsonify({'msg': 'OK', 'username': data['username']})
+    username, password = data['username'], data['password']
+    if username in users and password == users[username]['password']:
+        authInfo = cleanAuthInfo(users[username])
+        session['auth_info'] = users[username]
+        return jsonify(authInfo)
     else:
         return jsonify({'msg': 'Go Away'}), 401
 
@@ -24,7 +30,7 @@ def login():
 @app.route('/api/whoami', methods=['GET'])
 def whoami():
     if 'username' in session:
-        return jsonify({'username': session['username']})
+        return jsonify(session['auth_info'])
     else:
         return jsonify({'msg': 'not logged in'}), 401
 

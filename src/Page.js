@@ -35,6 +35,7 @@ function SimpleAppBarBase(props) {
           <Link to='/'>Index(Public)</Link>
           <Link to='/about'>About(Public)</Link>
           <Link to='/hello'>Hello(Login Required)</Link>
+          <Link to='/admin'>Admin Only</Link>
           <LoginLink/>
         </Toolbar>
       </AppBar>

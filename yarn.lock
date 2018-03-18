@@ -6017,6 +6017,10 @@ react-router-auth-provider@^1.0.1:
     prop-types "^15.6.1"
     recompose "^0.26.0"
 
+"react-router-auth-provider@link:../react-router-auth-provider/":
+  version "0.0.0"
+  uid ""
+
 react-router-dom@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"

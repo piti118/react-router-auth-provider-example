@@ -10,7 +10,6 @@ function Hello({authInfo, onLogout}){
         Logout
       </Button>
     </div>)
-
 }
 
 export default withAuth(Hello)

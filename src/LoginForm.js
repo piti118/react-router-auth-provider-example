@@ -11,6 +11,7 @@ type cb = (string) => void
 function UserNameTextBox({ username, onChange}: {username: string, onChange:cb})
 {
   return <TextField
+    label='Username'
     value={username}
     onChange={(e) => onChange(e.target.value)}
   />
@@ -19,6 +20,7 @@ function UserNameTextBox({ username, onChange}: {username: string, onChange:cb})
 function PasswordTextbox({ password, onChange}: {password: string, onChange: cb})
 {
   return <TextField
+    label='Password'
     type="password"
     value={password}
     onChange={(e) => onChange(e.target.value)}
@@ -69,9 +71,12 @@ class LoginForm extends Component<LoginFromProps, LoginFormState> {
     return (
       <div>
         {warning}
+        <br/>
         <UserNameTextBox username={username} onChange={this.handleChange('username')} />
+        <br/>
         <PasswordTextbox password={password} onChange={this.handleChange('password')}/>
-        <Button variant='raised' onClick={
+        <br/>
+        <Button color='primary' variant='raised' onClick={
           () => this.handleClick(username, password)
         }>
           {username} wants to login.

@@ -9,6 +9,7 @@ import { AuthProvider, AuthRoute } from 'react-router-auth-provider'
 import LoginForm from './LoginForm'
 import Hello from './Hello'
 import { createMuiTheme, MuiThemeProvider } from 'material-ui';
+import Page from './Page';
 
 
 function Index() {
@@ -45,10 +46,12 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <MyAuthProvider>
-            <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/" component={Index} />
-            <MyAuthRoute path="/hello" component={Hello} />
+            <Page>
+              <Route exact path="/login" component={LoginForm} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/" component={Index} />
+              <MyAuthRoute path="/hello" component={Hello} />
+            </Page>
           </MyAuthProvider>
         </Router>
       </MuiThemeProvider>)

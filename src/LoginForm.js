@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react'
-import withRouter from 'react-router-dom/es/withRouter';
+import withRouter from 'react-router-dom/withRouter';
 import { withAuth } from 'react-router-auth-provider';
-import TextField from 'material-ui/es/TextField/TextField';
+import TextField from 'material-ui/TextField/TextField';
 import * as api from './api'
-import Button from 'material-ui/es/Button/Button';
+import Button from 'material-ui/Button/Button';
 
 type cb = (string) => void
 
